@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from "react";
+import { ContextApp, initialState, reducer } from "./reducer";
+import { ListItems, TodoAdd } from "./components";
 
-function App() {
+import styles from "./App.module.sass";
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContextApp.Provider value={{ dispatch, state }}>
+      <div className={styles.app}>
+        <TodoAdd />
+        <ListItems />
+      </div>
+    </ContextApp.Provider>
   );
-}
+};
 
 export default App;
