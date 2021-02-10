@@ -1,12 +1,16 @@
-import React, { useContext, useState } from "react";
-import { ContextApp } from "../../reducer";
+import React, { useState } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
 
 import { TodoItem, TodoItemEdit, SelectMenu } from "../index";
 
 import styles from "./ListItems.module.sass";
 
 export const ListItems = () => {
-  const { state, dispatch } = useContext(ContextApp);
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const [editTodo, setEditTodo] = useState("");
   const [select, setSelect] = useState({
     open: false,

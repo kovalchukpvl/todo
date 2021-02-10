@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
-import { ContextApp } from "../../reducer";
+import { useDispatch } from "react-redux";
 
 import styles from "./TodoAdd.module.sass";
 
 export const TodoAdd = () => {
-  const { dispatch } = useContext(ContextApp);
+  const dispatch = useDispatch();
   const [label, setLabel] = useState("");
 
   const add = () => {
@@ -26,7 +26,7 @@ export const TodoAdd = () => {
         type="text"
         value={label}
         onChange={(e) => setLabel(e.target.value)}
-        onKeyUp={(e) => e.key === 'Enter' && add()}
+        onKeyUp={(e) => e.key === "Enter" && add()}
       />
       <button onClick={() => add()}>Add</button>
     </div>

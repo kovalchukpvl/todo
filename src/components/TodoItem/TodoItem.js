@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { ContextApp } from "../../reducer";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import styles from "./TodoItem.module.sass";
 
@@ -9,7 +9,7 @@ export const TodoItem = ({
   select,
   changeSelect,
 }) => {
-  const { dispatch } = useContext(ContextApp);
+  const dispatch = useDispatch();
   const [checkbox, setCheckbox] = useState(false);
   const deleteTodo = () => {
     dispatch({
@@ -23,6 +23,10 @@ export const TodoItem = ({
   useEffect(() => {
     changeSelect(id, checkbox);
   }, [checkbox]);
+
+  useEffect(() => {
+    setCheckbox(false);
+  }, [select.open]);
 
   return (
     <div

@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
-import { ContextApp } from "../../reducer";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import styles from "./TodoItemEdit.module.sass";
 
 export const TodoItemEdit = ({ item: { id, label }, setEditTodo }) => {
-  const { dispatch } = useContext(ContextApp);
+  const dispatch = useDispatch();
   const [todo, setTodo] = useState(label);
   const saveChangeTodo = () => {
     dispatch({

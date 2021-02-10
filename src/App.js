@@ -1,19 +1,15 @@
-import React, { useReducer } from "react";
-import { ContextApp, initialState, reducer } from "./reducer";
+import React from "react";
+
 import { ListItems, TodoAdd } from "./components";
 
 import styles from "./App.module.sass";
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
-    <ContextApp.Provider value={{ dispatch, state }}>
-      <div className={styles.app}>
-        <TodoAdd />
-        <ListItems />
-      </div>
-    </ContextApp.Provider>
+    <div className={styles.app}>
+      <TodoAdd />
+      <ListItems />
+    </div>
   );
 };
 
